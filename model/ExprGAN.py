@@ -39,8 +39,8 @@ class ExprGAN(BaseModel):
         self.Discriminator_img = Discriminator_img()
         
         if self.is_Train:
-            MainModel = imp.load_source('MainModel', '/ExprGAN/model/vgg_face_dag.py')
-            self.face_embedding = MainModel.vgg_face_dag('ExprGAN/model/vgg_face_dag.pth')
+            MainModel = imp.load_source('MainModel', '/home/wpk/paper/code/Comparison_experiments/ExprGAN/model/vgg_face_dag.py')
+            self.face_embedding = MainModel.vgg_face_dag('/home/wpk/paper/code/Comparison_experiments/ExprGAN/model/vgg_face_dag.pth')
             
             for param in self.face_embedding.parameters():
                 param.requires_grad = False
@@ -261,7 +261,7 @@ class ExprGAN(BaseModel):
             if epoch:
                 filename = 'epoch{0}_{1}'.format(epoch, filename)
 
-            path = os.path.join('/ExprGAN/image', filename)
+            path = os.path.join('/home/wpk/paper/code/Comparison_experiments/ExprGAN/image', filename)
                 
             img = Tensor2Image(img)
             syn_img = Tensor2Image(syn_img)
